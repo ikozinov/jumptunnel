@@ -1,0 +1,14 @@
+version: '2.2'
+services:
+  cassandra:
+    build: 
+      context: .
+    image: "ikozinov/jumptunnel"
+    ports:
+      - "5432:5432"
+    environment:
+      LISTEN_PORT: 5432
+      DESTINATION: postgres.internal.network:5432
+      TUNNEL: ${TUNNEL}
+      PASSPHRASE: ${PASSPHRASE}
+      PRIVATE_KEY: ${PRIVATE_KEY}
